@@ -16,6 +16,14 @@ const ReminderList = (props) => {
     }
   }, []);
 
+  const deleteTask = (index) => {
+    let tempList = taskList
+    tempList.splice(index, 1)
+    localStorage.setItem("TaskList", JSON.stringify(tempList))
+    setTaskList(tempList)
+    window.location.reload()
+  }
+
   const toggle = () => setModal(!modal);
 
   const savetask = (task) => {
@@ -30,7 +38,7 @@ const ReminderList = (props) => {
 
   return (
     <>
-      <div className="header">
+      <div className="header text-center">
         <h3 className="mt-3">WhizReminder ⏰ </h3>
         <button
           className="btn btn-primary mt-2"
@@ -44,7 +52,7 @@ const ReminderList = (props) => {
 
       <div className="task-container">
         {taskList && taskList.map((task, index) => (
-          <Card taskObj={task} index={index} />
+          <Card deleteTask={deleteTask} taskObj={task} index={index} />
         ))}
       </div>
 

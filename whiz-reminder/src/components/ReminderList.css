@@ -1,13 +1,12 @@
 .header{
     height: 200px;
     width: 100%;
-    background-color: #f1f1f1;
-    padding: 30px;
-    text-align: center;
-    font-size: 35px;
-}
+    background-color : #E9EEF6;
+    padding-top: 50px;
+  }
 
-.task-container{
+
+  .task-container{
     height: 600px;
     width: 100%;
     display: flex;
