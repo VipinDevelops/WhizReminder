@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import './CreateReminder.css';
-
+import DateTimePicker from 'react-datetime-picker';
 
 const CreateReminder = ({ modal, toggle, save }) => {
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+  const [remindAt, setRemindAt] = useState();
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,9 +23,11 @@ const CreateReminder = ({ modal, toggle, save }) => {
     let taskObj = {};
     taskObj['Name'] = taskName;
     taskObj['Description'] = taskDescription;
+    taskObj['RemindAt'] = remindAt;
     save(taskObj);
     setTaskName('');
     setTaskDescription('');
+    setRemindAt();
     toggle();
   };
 
@@ -36,13 +40,6 @@ const CreateReminder = ({ modal, toggle, save }) => {
           X
         </button>
       </div>
-      {/* <div className="title">
-        <h1>Are You Sure You Want to Continue?</h1>
-      </div>
-      <div className="body">
-        <p>The next page looks amazing. Hope you want to go there!</p>
-      </div> */}
-
       <form>
         <div className="form-group">
           <label htmlFor="task-title">Task Name</label>
@@ -65,19 +62,19 @@ const CreateReminder = ({ modal, toggle, save }) => {
           ></textarea>
         </div>
         <div
-        //  className="form-group"
+          className="form-group"
         >
           <label htmlFor="task-date">Task Date</label>
-          {/* <DateTimePicker
-          // value={remindAt}
-          // onChange={setRemindAt}
-          // minDate={new Date()}
-          // minutePlaceholder="mm"
-          // hourPlaceholder="hh"
-          // dayPlaceholder="DD"
-          // monthPlaceholder="MM"
-          // yearAriaLabel="YYYY"
-          /> */}
+          <DateTimePicker
+            value={remindAt}
+            onChange={setRemindAt}
+            minDate={new Date()}
+            minutePlaceholder="mm"
+            hourPlaceholder="hh"
+            dayPlaceholder="DD"
+            monthPlaceholder="MM"
+            yearAriaLabel="YYYY"
+          />
 
 
         </div>

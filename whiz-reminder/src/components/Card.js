@@ -35,6 +35,7 @@ const Card = ({ taskObj, index, deleteTask }) => {
             <div class="task-holder">
                 <span class="card-header" style={{ "background-color": colors[index % 5].secondaryColor, "border-radius": "10px" }}>{taskObj.Name}</span>
                 <p className="mt-3">{taskObj.Description}</p>
+                <p className="mt-3">{taskObj.RemindAt.toLocaleString("en-US", { timezone: "Asia/Kolkata" })}</p>
                 <div style={{ "position": "absolute", "right": "20px", "bottom": "20px" }}>
                     <i class="fas fa-trash-alt" style={{ "color": colors[index % 5].primaryColor, "cursor": "pointer" }} onClick={handleDelete}></i>
                 </div>
