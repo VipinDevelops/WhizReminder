@@ -50,13 +50,14 @@ const ReminderList = (props) => {
         </button>
       </div>
 
+      <CreateReminder modal={modal} toggle={toggle} save={savetask} />
+
       <div className="task-container">
         {taskList && taskList.map((task, index) => (
           <Card deleteTask={deleteTask} taskObj={task} index={index} />
         ))}
       </div>
 
-      <CreateReminder modal={modal} toggle={toggle} save={savetask} />
     </>
   );
 };
