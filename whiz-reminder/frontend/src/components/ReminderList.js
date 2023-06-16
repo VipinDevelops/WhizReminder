@@ -2,38 +2,36 @@ import './ReminderList.css'
 import React, { useEffect, useState } from 'react';
 import CreateReminder from '../modals/CreateReminder';
 import Card from './Card';
+import axios from 'axios';
 
 const ReminderList = (props) => {
   const [modal, setModal] = useState(false);
-  const [taskList, setTaskList] = useState([]);
+  const [reminderList, setReminderList] = useState([]);
 
   useEffect(() => {
-    let arr = localStorage.getItem('TaskList');
+    axios.get('http://localhost:4000/api/Getallreminder').then((res) => {
+      console.log(res.data)
+      setReminderList(res.data)
+    });
 
-    if (arr) {
-      let object = JSON.parse(arr);
-      setTaskList(object);
-    }
+
   }, []);
 
-  const deleteTask = (index) => {
-    let tempList = taskList
-    tempList.splice(index, 1)
-    localStorage.setItem("TaskList", JSON.stringify(tempList))
-    setTaskList(tempList)
-    window.location.reload()
+  const deleteTask = (id) => {
+    axios.delete('http://localhost:4000/api/deleteReminder', { data: { id: id } }).then((res) => {
+      console.log(res.data)
+      setReminderList(res.data)
+    });
   }
 
   const toggle = () => setModal(!modal);
 
   const savetask = (task) => {
-    let tempList = taskList;
-    tempList.push(task);
-
-    localStorage.setItem('TaskList', JSON.stringify(tempList));
-
-    setTaskList(tempList);
-    setModal(false);
+    console.log(task)
+    axios.post('http://localhost:4000/api/createreminder', task).then((res) => {
+      console.log(res.data)
+      setReminderList(res.data)
+    });
   };
 
   return (
@@ -46,15 +44,15 @@ const ReminderList = (props) => {
             setModal(true);
           }}
         >
-          Create Task 🚀
+          Create Reminder 🚀
         </button>
       </div>
 
       <CreateReminder modal={modal} toggle={toggle} save={savetask} />
 
       <div className="task-container">
-        {taskList && taskList.map((task, index) => (
-          <Card deleteTask={deleteTask} taskObj={task} index={index} />
+        {reminderList && reminderList.map((task, index) => (
+          <Card deleteTask={deleteTask} taskObj={task} index={index} key={task._id} id={task._id} />
         ))}
       </div>
 
