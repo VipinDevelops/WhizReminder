@@ -2,6 +2,7 @@ import './ReminderList.css'
 import React, { useEffect, useState } from 'react';
 import CreateReminder from '../modals/CreateReminder';
 import Card from './Card';
+import Header from './Header'
 import axios from 'axios';
 
 const ReminderList = (props) => {
@@ -36,17 +37,7 @@ const ReminderList = (props) => {
 
   return (
     <>
-      <div className="header text-center">
-        <h3 className="mt-3">WhizReminder ⏰ </h3>
-        <button
-          className="btn btn-primary mt-2"
-          onClick={() => {
-            setModal(true);
-          }}
-        >
-          Create Reminder 🚀
-        </button>
-      </div>
+      <Header setModal={setModal} />
 
       <CreateReminder modal={modal} toggle={toggle} save={savetask} />
 
