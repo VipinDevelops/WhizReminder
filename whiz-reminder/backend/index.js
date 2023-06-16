@@ -34,22 +34,23 @@ app.get('/api/Getallreminder', async (req, res) => {
 
 app.post('/api/createreminder', async (req, res) => {
     try {
-        const { reminderName, reminderDescription, remindAt, isReminded } = req.body;
+        const { reminderName, reminderDescription, remindAt } = req.body;
         const newReminder = new Reminder({
             reminderName,
             reminderDescription,
             remindAt,
-            isReminded,
+            isReminded: false,
         });
         await newReminder.save();
-        res.json(newReminder);
+        const allReminder = await Reminder.find();
+        res.json(allReminder);
     } catch (error) {
         console.error(error.message);
         res.status(500).send("Server Error");
     }
 });
 
-app.post('/api/deleteReminder', async (req, res) => {
+app.delete('/api/deleteReminder', async (req, res) => {
     try {
         const { id } = req.body;
         await Reminder.findByIdAndDelete(id);
