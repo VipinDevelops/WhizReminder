@@ -1,6 +1,6 @@
 import React from 'react';
 import './Card.css';
-const Card = ({ taskObj, index, deleteTask }) => {
+const Card = ({ taskObj, index, deleteTask, id }) => {
 
     const colors = [
         {
@@ -24,18 +24,23 @@ const Card = ({ taskObj, index, deleteTask }) => {
             secondaryColor: "#F3F0FD"
         }
     ]
+
     const handleDelete = () => {
-        deleteTask(index)
+        deleteTask(id)
     }
+
+    const date = new Date(taskObj.remindAt);
+
+
 
     return (
 
         <div class="card-wrapper mr-5">
             <div class="card-top" style={{ "background-color": colors[index % 5].primaryColor }}></div>
             <div class="task-holder">
-                <span class="card-header" style={{ "background-color": colors[index % 5].secondaryColor, "border-radius": "10px" }}>{taskObj.Name}</span>
-                <p className="mt-3">{taskObj.Description}</p>
-                <p className="mt-3">{taskObj.RemindAt.toLocaleString("en-US", { timezone: "Asia/Kolkata" })}</p>
+                <span class="card-header" style={{ "background-color": colors[index % 5].secondaryColor, "border-radius": "10px" }}>{taskObj.reminderName}</span>
+                <p className="mt-3">{taskObj.reminderDescription}</p>
+                <p className="mt-3">{date.toLocaleString("en-US", { timezone: "Asia/Kolkata" })}</p>
                 <div style={{ "position": "absolute", "right": "20px", "bottom": "20px" }}>
                     <i class="fas fa-trash-alt" style={{ "color": colors[index % 5].primaryColor, "cursor": "pointer" }} onClick={handleDelete}></i>
                 </div>
