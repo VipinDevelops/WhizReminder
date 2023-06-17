@@ -13,7 +13,7 @@ const ReminderList = (props) => {
   const BASE_URL = API_URL;
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/Getallreminder`).then((res) => {
+    axios.get(`${BASE_URL}/api/Getallreminder`).then((res) => {
       console.log(res.data)
       setReminderList(res.data)
     });
@@ -22,7 +22,7 @@ const ReminderList = (props) => {
   }, [BASE_URL]);
 
   const deleteTask = (id) => {
-    axios.delete(`${BASE_URL}/deleteReminder`, { data: { id: id } }).then((res) => {
+    axios.delete(`${BASE_URL}/api/deleteReminder`, { data: { id: id } }).then((res) => {
       console.log(res.data)
       setReminderList(res.data)
     });
@@ -32,7 +32,7 @@ const ReminderList = (props) => {
 
   const savetask = (task) => {
     console.log(task)
-    axios.post(`${BASE_URL}/createreminder`, task).then((res) => {
+    axios.post(`${BASE_URL}/api/createreminder`, task).then((res) => {
       console.log(res.data)
       setReminderList(res.data)
     });
