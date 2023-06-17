@@ -98,5 +98,5 @@ const port = process.env.PORT;
 const server = process.env.SERVER;
 
 app.listen(port, () => {
-  console.log(`Server is running on port ${server}:${port}`);
+  console.log(`Server is Running`);
 });
