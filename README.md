@@ -9,11 +9,11 @@ WhizReminder is a WhatsApp reminder bot that lets users schedule and receive rem
 ![Screenshot from 2023-06-17 14-16-08](https://github.com/VipinDevelops/WhizReminder/assets/99081689/c5394279-1aa7-47a7-b51f-382b02c117ee)
 
 ## Usage 
-✔️ Message Reminder Received on WhatsApp
+✔️ Message Reminder Received on WhatsApp <br>
 ![Screencast from 2023-06-16 21-44-26.webm](https://github.com/VipinDevelops/WhizReminder/assets/99081689/91d06525-291b-4219-8f34-fb3a8dc5b19d)
 
 
-✔️ Creating Different Reminders
+✔️ Creating Different Reminders <br>
 ![Screencast from 2023-06-17 14-13-22.webm](https://github.com/VipinDevelops/WhizReminder/assets/99081689/5931204d-ea15-444f-8d62-d470156333d5)
 
 
