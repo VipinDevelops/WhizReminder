@@ -1,3 +1,3 @@
-const API_URL = 'https://whizreminder-api.onrender.com/api';
+const API_URL = '';
 
 export default API_URL;
