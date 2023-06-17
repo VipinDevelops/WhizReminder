@@ -33,12 +33,20 @@ const CreateReminder = ({ modal, toggle, save }) => {
     toggle();
   };
 
+  const handleCancel = (e) => {
+    e.preventDefault();
+    setReminderName('');
+    setReminderDescription('');
+    setRemindAt();
+    toggle();
+  }
+
   return (
     modal && <div className="modalBackground">
       <div className="modalContainer">
         <div className="titleCloseBtn">
           <button
-            onClick={toggle}
+            onClick={handleCancel}
           >
             X
           </button>
@@ -87,7 +95,7 @@ const CreateReminder = ({ modal, toggle, save }) => {
 
         <div className="footer">
           <button
-            onClick={toggle}
+            onClick={handleCancel}
             id="cancelBtn"
           >
             Cancel
