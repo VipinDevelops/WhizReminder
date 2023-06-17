@@ -6,7 +6,7 @@ WhizReminder is a WhatsApp reminder bot that lets users schedule and receive rem
 
 ![Screenshot from 2023-06-17 14-16-08](https://github.com/VipinDevelops/WhizReminder/assets/99081689/c5394279-1aa7-47a7-b51f-382b02c117ee)
 
-## Usage 
+## 📝 Usage 
 ✔️ Message Reminder Received on WhatsApp <br>
 
 https://github.com/VipinDevelops/WhizReminder/assets/99081689/91d06525-291b-4219-8f34-fb3a8dc5b19d
@@ -18,13 +18,13 @@ https://github.com/VipinDevelops/WhizReminder/assets/99081689/5931204d-ea15-444f
 
 
 
-## Features 🔥
+## 🔥 Features 
 - Schedule reminders for any time and date
 - Receive reminders through WhatsApp
 - Customize reminder messages
 
 
-## Tech Stack 👨🏻‍💻
+## 👨🏻‍💻 Tech Stack 
 
 WhizReminder is built using the following technologies:
 
@@ -35,8 +35,8 @@ WhizReminder is built using the following technologies:
 - [MongoDB](https://www.mongodb.com/) - a NoSQL database
 - [Bootstrap](https://getbootstrap.com//) - a CSS framework      
 
-## Quickstart
-###  Starting Backend 🛠️
+##  🏁 Quickstart
+### 🛠️ Starting Backend 
 
 1. Clone this repository: [https://github.com/VipinDevelops/WhizReminder](https://github.com/VipinDevelops/WhizReminder)
 2. Navigate to the `whiz-reminder/backend` directory using the command line: `cd whiz-reminder/backend`
@@ -59,7 +59,7 @@ WhizReminder is built using the following technologies:
 4. Now Inside the `backend` directory, install the required dependencies by running the following command: `npm install`
 5. Start the backend server by executing: `npm start`
 
-### Starting Frontend 🖥️
+### 🖥️ Starting Frontend 
 
 1. Clone this repository: [https://github.com/VipinDevelops/WhizReminder](https://github.com/VipinDevelops/WhizReminder)
 2. Navigate to the `whiz-reminder/frontend` directory using the command line: `cd whiz-reminder/frontend`
@@ -77,6 +77,6 @@ If you encounter any bugs, please feel free to [open an issue](https://github.co
 If you have any feature requests or need additional functionality for your specific use case, don't hesitate to [open an issue](https://github.com/VipinDevelops/WhizReminder/issues) on GitHub.
 
 
-## Support
+## 🤝 Support
 
 Don't forget to leave a star ⭐️.
