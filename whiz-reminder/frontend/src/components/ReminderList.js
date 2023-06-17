@@ -11,7 +11,7 @@ const ReminderList = (props) => {
   const [reminderList, setReminderList] = useState([]);
 
   const BASE_URL = API_URL;
-  
+
   useEffect(() => {
     axios.get(`${BASE_URL}/Getallreminder`).then((res) => {
       console.log(res.data)
@@ -19,7 +19,7 @@ const ReminderList = (props) => {
     });
 
 
-  }, []);
+  }, [BASE_URL]);
 
   const deleteTask = (id) => {
     axios.delete(`${BASE_URL}/deleteReminder`, { data: { id: id } }).then((res) => {
