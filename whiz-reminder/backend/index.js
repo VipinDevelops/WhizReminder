@@ -51,7 +51,7 @@ setInterval(async () => {
 
 // API endpoints
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello Welcome to the Whiz reminder!');
 });
 
 app.get('/api/Getallreminder', async (req, res) => {
@@ -74,7 +74,7 @@ app.post('/api/createreminder', async (req, res) => {
       isReminded: false,
     });
     await newReminder.save();
-    const allReminder = await Reminder.find();
+    const allReminder = await Reminder.find({ isReminded: false });
     res.json(allReminder);
   } catch (error) {
     console.error(error.message);
@@ -86,7 +86,7 @@ app.delete('/api/deleteReminder', async (req, res) => {
   try {
     const { id } = req.body;
     await Reminder.findByIdAndDelete(id);
-    const allReminder = await Reminder.find();
+    const allReminder = await Reminder.find({ isReminded: false });
     res.json(allReminder);
   } catch (error) {
     console.error(error.message);
@@ -95,7 +95,8 @@ app.delete('/api/deleteReminder', async (req, res) => {
 });
 
 const port = process.env.PORT;
+const server = process.env.SERVER;
 
 app.listen(port, () => {
-  console.log(`Server is running on port http://localhost:${port}`);
+  console.log(`Server is running on port ${server}:${port}`);
 });
