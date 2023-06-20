@@ -36,8 +36,7 @@ setInterval(async () => {
 
           console.log(`Reminder for ${reminder.reminderName}`)
           await client.messages.create({
-            body: `Hey Vipin, quick reminder! Don't forget ${reminder.reminderName} - ${reminder.reminderDescription} at ${time}.
-              `,
+            body: `Hey Dont Forget to ${reminder.reminderName}-${reminder.reminderDescription} at ${time}`,
             from: "whatsapp:+14155238886",
             to: `whatsapp:${process.env.MY_PHONE_NUMBER}`,
           });

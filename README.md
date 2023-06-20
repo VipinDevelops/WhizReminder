@@ -65,7 +65,7 @@ WhizReminder is built using the following technologies:
 2. Navigate to the `whiz-reminder/frontend` directory using the command line: `cd whiz-reminder/frontend`
 3. Inside the `frontend` directory, install the required dependencies by running the following command: `npm install`
 4. Navigate to the `src` directory using the command line: `cd src`
-5. Open the `config.js` file and replace the `API_URL` with the link where your backend server is running.
+5. Open the `config.js` file and replace the `API_URL` with the link where your backend server is running with out `/` on end.
 6. Start the frontend application by executing the following command: `npm start`
 
 ## 🐛 Bug Reporting
