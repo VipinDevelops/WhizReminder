@@ -1,17 +1,21 @@
-const dotenv = require("dotenv")
-const cors = require("cors");
+const dotenv = require('dotenv');
+const cors = require('cors');
 const express = require('express');
 
 const connectDB = require('./db');
-const Reminder = require('./model/reminder')
+const Reminder = require('./model/reminder-model');
+const {
+  GetReminders,
+  CreateReminder,
+  DeleteReminder,
+} = require('./controller/reminder-controller');
 
 // App config
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 dotenv.config();
-
 
 // DB config
 //connect to database
@@ -29,15 +33,17 @@ setInterval(async () => {
 
           const accountSid = process.env.ACCOUNT_SID;
           const authToken = process.env.AUTH_TOKEN;
-          const client = require("twilio")(accountSid, authToken);
+          const client = require('twilio')(accountSid, authToken);
 
           const date = new Date(reminder.remindAt);
-          const time = date.toLocaleString("en-US", { timezone: "Asia/Kolkata" });
+          const time = date.toLocaleString('en-US', {
+            timezone: 'Asia/Kolkata',
+          });
 
-          console.log(`Reminder for ${reminder.reminderName}`)
+          console.log(`Reminder for ${reminder.reminderName}`);
           await client.messages.create({
             body: `Hey Dont Forget to ${reminder.reminderName}-${reminder.reminderDescription} at ${time}`,
-            from: "whatsapp:+14155238886",
+            from: 'whatsapp:+14155238886',
             to: `whatsapp:${process.env.MY_PHONE_NUMBER}`,
           });
         }
@@ -53,45 +59,11 @@ app.get('/', (req, res) => {
   res.send('Hello Welcome to the Whiz reminder!');
 });
 
-app.get('/api/Getallreminder', async (req, res) => {
-  try {
-    const allReminder = await Reminder.find({ isReminded: false });
-    res.json(allReminder);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server Error");
-  }
-});
+app.get('/api/Getallreminder', GetReminders);
 
-app.post('/api/createreminder', async (req, res) => {
-  try {
-    const { reminderName, reminderDescription, remindAt } = req.body;
-    const newReminder = new Reminder({
-      reminderName,
-      reminderDescription,
-      remindAt,
-      isReminded: false,
-    });
-    await newReminder.save();
-    const allReminder = await Reminder.find({ isReminded: false });
-    res.json(allReminder);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server Error");
-  }
-});
+app.post('/api/createreminder', CreateReminder);
 
-app.delete('/api/deleteReminder', async (req, res) => {
-  try {
-    const { id } = req.body;
-    await Reminder.findByIdAndDelete(id);
-    const allReminder = await Reminder.find({ isReminded: false });
-    res.json(allReminder);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send("Server Error");
-  }
-});
+app.delete('/api/deleteReminder', DeleteReminder);
 
 const port = process.env.PORT;
 const server = process.env.SERVER;
